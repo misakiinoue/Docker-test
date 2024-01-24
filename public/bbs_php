@@ -1,0 +1,14 @@
+<?php
+$dbh = new PDO('mysql:host=mysql;dbname=techc', 'root', '');
+
+session_start();
+if (isset($_POST['body']) && !empty($_SESSION['login_user_id'])) {
+  // POSTで送られてくるフォームパラメータ body がある かつ ログイン状態 の場合
+
+    $image_filename = null;
+      if (!empty($_POST['image_base64'])) {
+          // 先頭の data:~base64, のところは削る
+              $base64 = preg_replace('/^data:.+base64,/', '', $_POST['image_base64']);
+
+
+

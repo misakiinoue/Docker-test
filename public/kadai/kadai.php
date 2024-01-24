@@ -24,13 +24,8 @@ move_uploaded_file($_FILES['image']['tmp_name'], $filepath);
 }
 
 // insertする
-
- $insert_sth = $dbh->prepare("INSERT INTO bbs_kadai (body, image_filename) VALUES (:body, :image_filename)");
-$insert_sth->execute([
-  ':body' => $_POST['body'],
-  ':image_filename' => $image_filename,
-]);
-
+$insert_sth = $dbh->prepare("INSERT INTO bbs_kadai (body, image_filename) VALUES (:body, :image_filename)");
+$insert_sth->execute([':body' => $_POST['body'],':image_filename' => $image_filename,]);
 
      // 処理が終わったらリダイレクトする
      // リダイレクトしないと，リロード時にまた同じ内容でPOSTすることになる
